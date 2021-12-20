@@ -1,5 +1,6 @@
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const CopyPlugin = require("copy-webpack-plugin");
 
 let mode = "development";
 if (process.env.NODE_ENV === "production") {
@@ -33,6 +34,10 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: "./src/index.html",
     }),
+    new CopyPlugin({
+      patterns: [
+        { from: "src/assets", to: "assets" },
+      ]}),
   ],
   module: {
     rules: [

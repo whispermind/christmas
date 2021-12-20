@@ -1,0 +1,13 @@
+.products {
+  background-image: url('../../assets/bg.jpg');
+  background-size: cover;
+  padding: 0 50px;
+}
+
+.products-items {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 30px;
+}

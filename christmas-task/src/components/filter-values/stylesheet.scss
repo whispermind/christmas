@@ -1,0 +1,90 @@
+.values-filter {
+  color: white;
+}
+
+.values-filter__shapes,
+.values-filter__color,
+.values-filter__size {
+  display: flex;
+  align-items: center;
+  padding: 15px 0;
+
+  & span {
+    margin-right: 20px;
+  }
+}
+
+.values-filter__color-button,
+.values-filter__size-button,
+.values-filter__shape-button {
+  margin: 0 5px;
+}
+
+.values-filter__color-button {
+  width: 30px;
+  height: 30px;
+}
+
+.values-filter__color-button_green {
+  background-color: green;
+}
+
+.values-filter__color-button_red {
+  background-color: red;
+}
+
+.values-filter__color-button_blue {
+  background-color: blue;
+}
+
+.values-filter__color-button_yellow {
+  background-color: yellow;
+}
+
+.values-filter__color-button_white {
+  background-color: white;
+}
+
+.values-filter__shape-button {
+  width: 40px;
+  height: 40px;
+  background: center/contain no-repeat;
+}
+
+.values-filter__shape-button_figure {
+  background-image: url(../../assets/svg/toy.svg);
+}
+
+.values-filter__shape-button_snowflake {
+  background-image: url(../../assets/svg/snowflake.svg);
+}
+
+.values-filter__shape-button_cone {
+  background-image: url(../../assets/svg/cone.svg);
+}
+
+.values-filter__shape-button_pear {
+  background-image: url(../../assets/svg/bell.svg);
+}
+
+.values-filter__shape-button_ball {
+  background-image: url(../../assets/svg/ball.svg);
+}
+
+.values-filter__size-button {
+  width: 50px;
+  height: 50px;
+  background: center/contain no-repeat url(../../assets/svg/ball.svg);
+}
+
+.values-filter__size-button_large {
+  background-size: 100%;
+}
+
+.values-filter__size-button_medium {
+  background-size: 75%;
+}
+
+.values-filter__size-button_small {
+  background-size: 50%;
+}
