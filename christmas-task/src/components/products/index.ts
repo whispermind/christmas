@@ -33,6 +33,7 @@ class products extends HTMLElement {
     filtred = this.filterSize(filtred);
     filtred = this.filterColor(filtred);
     filtred = this.filterLike(filtred);
+    filtred = this.searchFilter(filtred);
     this.renderItems(filtred);
   }
   private renderItems(arr:Idescription[]){
@@ -49,6 +50,8 @@ class products extends HTMLElement {
   private addListeners() {
     const itemsContainer = document.querySelector(".products-items")!;
     const filters = document.querySelector(".products-filters")!;
+    const searchInput = document.querySelector('.header__search')! as HTMLInputElement;
+    searchInput.addEventListener('input', () => this.filterItems());
     filters.addEventListener("click", (event) => {
       if (event.target instanceof HTMLButtonElement) this.filterItems();
     });
@@ -100,6 +103,13 @@ class products extends HTMLElement {
   private filterLike(arr: Idescription[]): Idescription[] {
     if (state.likedOnly) {
       return arr.filter((elem: Idescription) => state.like.includes(elem.num));
+    }
+    return arr;
+  }
+  private searchFilter(arr: Idescription[]): Idescription[]{
+    const searchInput = document.querySelector('.header__search')! as HTMLInputElement;
+    if(searchInput.value){
+      return arr.filter((elem: Idescription) => elem.name.indexOf(searchInput.value) > -1);
     }
     return arr;
   }
