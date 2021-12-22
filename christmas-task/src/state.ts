@@ -3,6 +3,8 @@ export interface Istate {
   readonly color: string[];
   readonly size: string[];
   readonly like: string[];
+  amountSlider: string[];
+  yearsSlider: string[];
   sort: string;
   likedOnly: boolean;
 }
@@ -11,6 +13,8 @@ const state: Istate = {
   color: [],
   size: [],
   like: [],
+  amountSlider: [],
+  yearsSlider: [],
   sort: '1',
   likedOnly: false,
 };

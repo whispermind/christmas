@@ -45,6 +45,7 @@
     "webpack-dev-server": "^4.6.0"
   },
   "dependencies": {
-    "nouislider": "^15.5.0"
+    "nouislider": "^15.5.0",
+    "wnumb": "^1.2.0"
   }
 }

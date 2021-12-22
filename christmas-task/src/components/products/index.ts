@@ -1,3 +1,5 @@
+import * as noUiSlider from 'nouislider';
+import 'nouislider/dist/nouislider.css';
 import template from "./template";
 import data from "../../data";
 import state from "../../state";
@@ -14,16 +16,30 @@ interface Idescription {
 }
 
 class products extends HTMLElement {
-  liked: HTMLElement = document.querySelector('.header__favorites')!;
-  searchInput: HTMLInputElement = document.querySelector('.header__search')!;
+  private liked: HTMLElement = document.querySelector('.header__favorites')!;
+  private searchInput: HTMLInputElement = document.querySelector('.header__search')!;
+  private sliders: noUiSlider.API[] = [];
   async connectedCallback() {
+    this.setStorage();
     this.liked.textContent = state.like.length.toString();
     this.searchInput.focus();
     this.render();
   }
-
+  private setStorage(){
+    const storageButton = document.querySelector('.storage')!;
+    const storageKey = 'OCHENSLOZHNOEIMYADLYAMOEGOLOKALSTORAGE';
+    const storageState = localStorage.getItem(storageKey);
+    if(storageState) Object.assign(state, JSON.parse(storageState));
+    storageButton.addEventListener('click', () => {
+      localStorage.clear();
+    });
+    window.addEventListener('beforeunload', () => {
+      localStorage.setItem(storageKey, JSON.stringify(state));
+    });
+  }
   private render() {
     this.innerHTML = template;
+    this.initSlider();
     this.addListeners();
     this.filterItems();
   }
@@ -36,6 +52,7 @@ class products extends HTMLElement {
     filtred = this.filterColor(filtred);
     filtred = this.filterLike(filtred);
     filtred = this.searchFilter(filtred);
+    filtred = this.rangeFilter(filtred);
     this.sort(filtred);
     this.renderItems(filtred);
   }
@@ -96,6 +113,9 @@ class products extends HTMLElement {
     state.color.length = 0;
     state.size.length = 0;
     state.likedOnly = false;
+    state.yearsSlider.length = 0;
+    state.amountSlider.length = 0;
+    this.sliders.forEach((elem) => elem.reset());
     selected.forEach((elem) => elem.classList.remove('selected'));
   }
   private filterColor(arr: Idescription[]) {
@@ -152,6 +172,62 @@ class products extends HTMLElement {
         }
         return 0;
       });
+  }
+  private rangeFilter(arr: Idescription[]){
+    let filtred: Idescription[] = arr;
+    if(state.yearsSlider.length){
+      filtred = arr.filter((elem) => Number(elem.year) >= Number(state.yearsSlider[0]) && Number(elem.year) <= Number(state.yearsSlider[1]));
+    }
+    if(state.amountSlider.length){
+      filtred = arr.filter((elem) => Number(elem.count) >= Number(state.amountSlider[0]) && Number(elem.count) <= Number(state.amountSlider[1]));
+    }
+    return filtred;
+  }
+  private initSlider(){
+    const yearSliderContainer = document.querySelector('.range-filter__year-slider')! as HTMLElement;
+    const amountSliderContainer = document.querySelector('.range-filter__amount-slider')! as HTMLElement;
+    this.sliders.push(noUiSlider.create(yearSliderContainer, {
+      start: [1940, 2020],
+      connect: true,
+      step: 10,
+      range: {
+          'min': 1940,
+          'max': 2020
+      }
+    }));
+    this.sliders.push(noUiSlider.create(amountSliderContainer, {
+      start: [1, 20],
+      connect: true,
+      step: 1,
+      range: {
+          'min': 1,
+          'max': 20
+      }
+    }));
+    if(state.yearsSlider.length) this.sliders[0].set(state.yearsSlider);
+    if(state.amountSlider.length) this.sliders[1].set(state.amountSlider);
+    this.setSliderListeners();
+  }
+  
+  setSliderListeners(){
+    const amountMin = document.querySelector('.slider__amount-min')! as HTMLInputElement;
+    const amountMax = document.querySelector('.slider__amount-max')! as HTMLInputElement;
+    const yearsMin = document.querySelector('.slider__years-min')! as HTMLInputElement;
+    const yearsMax = document.querySelector('.slider__years-max')! as HTMLInputElement;
+    this.sliders[0].on('update', () => {
+      const values = this.sliders[0].get() as string[];
+      yearsMin.value = parseInt(values[0]).toString();
+      yearsMax.value = parseInt(values[1]).toString();;
+      state.yearsSlider = values;
+      this.filterItems();
+    });
+    this.sliders[1].on('update', () => {
+      const values = this.sliders[1].get() as string[];
+      amountMin.value = parseInt(values[0]).toString();
+      amountMax.value = parseInt(values[1]).toString();;
+      state.amountSlider = values;
+      this.filterItems();
+    })
   }
 }
 customElements.define("products-container", products);
