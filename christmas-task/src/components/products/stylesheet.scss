@@ -1,13 +1,16 @@
 .products {
   background-image: url('../../assets/bg.jpg');
-  background-size: cover;
+  background-size: 800%;
   padding: 0 50px;
+  width: 100%;
 }
 
 .products-items {
   display: flex;
-  justify-content: space-between;
   flex-wrap: wrap;
-  align-items: center;
+  justify-content: center;
+  padding: 50px 0;
   gap: 30px;
+  margin: 0 auto;
+  min-height: 80vh;
 }

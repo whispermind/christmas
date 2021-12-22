@@ -1,6 +1,6 @@
 const template = `
   <div class="products">
-    <div class="products__filters">
+    <div class="products-filters">
       <filter-values />
       <filter-range />
       <filter-sort />

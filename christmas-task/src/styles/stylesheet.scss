@@ -1,14 +1,20 @@
 * {
   box-sizing: border-box;
 }
-button{
+
+button {
   border: none;
   outline: none;
 }
 
 .header,
-.footer {
+.footer,
+.header__aside {
   display: flex;
+}
+
+.header,
+.footer {
   justify-content: space-between;
   align-items: center;
   height: 75px;
@@ -19,4 +25,16 @@ button{
 .header,
 .footer {
   padding: 0 50px;
+}
+
+
+.header__favorites {
+  width: 4rem;
+  height: 4rem;
+  margin: 0 20px;
+  border: solid 1px white;
+  border-radius: 50%;
+  text-align: center;
+  font-size: 22px;
+  line-height: 4rem;
 }

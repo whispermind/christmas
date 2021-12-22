@@ -4,8 +4,10 @@ h2 {
 }
 
 .toy-card {
+  position: relative;
   text-align: center;
   color: white;
+  cursor: pointer;
 
   & img {
     width: 50%;
@@ -14,4 +16,33 @@ h2 {
 
 .toy-card__descritpion {
   width: 200px;
+}
+
+.toy-card__image {
+  margin: 50px 0;
+}
+
+.toy-card__like {
+  position: absolute;
+  top: 0;
+
+  & svg {
+    width: 30%;
+    opacity: .5;
+  }
+
+  & path {
+    stroke: red;
+    fill: none;
+  }
+}
+
+.toy-card__like_active {
+  & svg {
+    opacity: 1;
+  }
+
+  & path {
+    fill: red;
+  }
 }
