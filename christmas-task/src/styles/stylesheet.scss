@@ -11,12 +11,12 @@ button {
 .footer,
 .header__aside {
   display: flex;
+  align-items: center;
 }
 
 .header,
 .footer {
   justify-content: space-between;
-  align-items: center;
   height: 75px;
   background-color: black;
   color: white;
@@ -27,6 +27,9 @@ button {
   padding: 0 50px;
 }
 
+.header__search {
+  height: 30px;
+}
 
 .header__favorites {
   width: 4rem;

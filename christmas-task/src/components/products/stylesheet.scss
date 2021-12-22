@@ -5,6 +5,12 @@
   width: 100%;
 }
 
+.products-filters {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
 .products-items {
   display: flex;
   flex-wrap: wrap;
@@ -13,4 +19,9 @@
   gap: 30px;
   margin: 0 auto;
   min-height: 80vh;
+}
+
+.warning {
+  font-size: 5rem;
+  color: white;
 }

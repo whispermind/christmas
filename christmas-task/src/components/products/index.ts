@@ -15,8 +15,10 @@ interface Idescription {
 
 class products extends HTMLElement {
   liked: HTMLElement = document.querySelector('.header__favorites')!;
+  searchInput: HTMLInputElement = document.querySelector('.header__search')!;
   async connectedCallback() {
     this.liked.textContent = state.like.length.toString();
+    this.searchInput.focus();
     this.render();
   }
 
@@ -34,11 +36,18 @@ class products extends HTMLElement {
     filtred = this.filterColor(filtred);
     filtred = this.filterLike(filtred);
     filtred = this.searchFilter(filtred);
+    this.sort(filtred);
     this.renderItems(filtred);
   }
   private renderItems(arr:Idescription[]){
     const container = document.querySelector(".products-items")!;
     container.innerHTML = "";
+    if(!arr.length){
+      const div = document.createElement('div');
+      div.classList.add('warning');
+      div.textContent = 'Извините, совпадений не обнаружено';
+      container.append(div);
+    }
     arr.forEach((itemData) => {
       const item = document.createElement('toy-card');
       Object.keys(itemData).forEach((key) => item.dataset[key] = itemData[key as keyof Idescription]);
@@ -50,14 +59,17 @@ class products extends HTMLElement {
   private addListeners() {
     const itemsContainer = document.querySelector(".products-items")!;
     const filters = document.querySelector(".products-filters")!;
-    const searchInput = document.querySelector('.header__search')! as HTMLInputElement;
-    searchInput.addEventListener('input', () => this.filterItems());
+    this.searchInput.addEventListener('input', () => this.filterItems());
     filters.addEventListener("click", (event) => {
-      if (event.target instanceof HTMLButtonElement) this.filterItems();
+      if (event.target instanceof HTMLButtonElement) {
+        if(event.target.classList.contains('cleaner')) this.resetState();
+        this.filterItems();
+      }
     });
     filters.addEventListener("change", (event) => {
       const target = event.target as HTMLInputElement;
       if(target && target.classList.contains('values-filter__liked')) state.likedOnly = target.checked;
+      if(target && target.id === 'sort') state.sort = target.value;
       this.filterItems()
     });
     itemsContainer.addEventListener("click", (event) => {
@@ -70,15 +82,22 @@ class products extends HTMLElement {
           const position = state.like.indexOf(num);
           state.like.splice(position, 1);
         } else {
+          if(state.like.length === 20){ alert('Все слоты заполнены'); return}
           state.like.push(num);
         }
-        console.log(state.like);
         component.classList.toggle(activeClass);
         this.liked.textContent = state.like.length.toString();
       }
     });
   }
-
+  private resetState(){
+    const selected = document.querySelectorAll('.selected');
+    state.shape.length = 0;
+    state.color.length = 0;
+    state.size.length = 0;
+    state.likedOnly = false;
+    selected.forEach((elem) => elem.classList.remove('selected'));
+  }
   private filterColor(arr: Idescription[]) {
     if (state.color.length) {
       return arr.filter((elem: Idescription) => state.color.includes(elem.color));
@@ -109,10 +128,30 @@ class products extends HTMLElement {
   private searchFilter(arr: Idescription[]): Idescription[]{
     const searchInput = document.querySelector('.header__search')! as HTMLInputElement;
     if(searchInput.value){
-      return arr.filter((elem: Idescription) => elem.name.indexOf(searchInput.value) > -1);
+      return arr.filter((elem: Idescription) => elem.name.toLowerCase().indexOf(searchInput.value.toLowerCase()) > -1);
     }
     return arr;
   }
-
+  private sort(arr: Idescription[]){
+      arr.sort((current, next) =>{
+        if(state.sort === '1'){
+          if(current.name < next.name ) { return -1; }
+          if(current.name > next.name) { return 1; }
+        }
+        if(state.sort === '2'){
+          if(current.name > next.name ) { return -1; }
+          if(current.name < next.name) { return 1; }
+        }
+        if(state.sort === '3'){
+          if(current.year < next.year ) { return -1; }
+          if(current.year > next.year) { return 1; }
+        }
+        if(state.sort === '4'){
+          if(current.year > next.year ) { return -1; }
+          if(current.year < next.year) { return 1; }
+        }
+        return 0;
+      });
+  }
 }
 customElements.define("products-container", products);
