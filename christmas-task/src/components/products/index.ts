@@ -176,10 +176,10 @@ class products extends HTMLElement {
   private rangeFilter(arr: Idescription[]){
     let filtred: Idescription[] = arr;
     if(state.yearsSlider.length){
-      filtred = arr.filter((elem) => Number(elem.year) >= Number(state.yearsSlider[0]) && Number(elem.year) <= Number(state.yearsSlider[1]));
+      filtred = filtred.filter((elem) => Number(elem.year) >= Number(state.yearsSlider[0]) && Number(elem.year) <= Number(state.yearsSlider[1]));
     }
     if(state.amountSlider.length){
-      filtred = arr.filter((elem) => Number(elem.count) >= Number(state.amountSlider[0]) && Number(elem.count) <= Number(state.amountSlider[1]));
+      filtred = filtred.filter((elem) => Number(elem.count) >= Number(state.amountSlider[0]) && Number(elem.count) <= Number(state.amountSlider[1]));
     }
     return filtred;
   }
