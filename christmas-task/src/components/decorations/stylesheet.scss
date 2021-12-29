@@ -1,0 +1,205 @@
+.decorations {
+  display: flex;
+  background-image: url('../../assets/bg.jpg');
+  background-size: 800%;
+  padding: 0 50px;
+  width: 100vw;
+  max-width: 100%;
+  min-height: calc(100vh - 150px);
+  justify-content: space-between;
+}
+
+.decorations__config {
+  flex-basis: 15%;
+}
+
+.decorations__drag-area {
+  display: flex;
+  justify-content: center;
+  background: center center/cover no-repeat;
+  flex-basis: 40%;
+  margin: 0 20px;
+
+  & img {
+    align-self: flex-end;
+  }
+}
+
+.decorations__toys-container {
+  display: flex;
+  align-self: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  flex-basis: 15%;
+  background: rgba($color: #c2c0c091, $alpha: .3);
+}
+
+.decorations__toy {
+  width: 60px;
+  height: 90px;
+  cursor: pointer;
+  margin: 10px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.decorations__toy-image {
+  width: 60px;
+}
+
+.decorations__toy-amount {
+  margin-top: 10px;
+  text-align: center;
+  color: white;
+  border: 1px solid silver;
+  border-radius: 50%;
+  width: 40%;
+  align-self: flex-end;
+}
+
+.snowflake {
+  background: center center/contain url(../../assets/svg/snowflake.svg);
+  position: absolute;
+  top: -20px;
+  z-index: 99;
+  animation: fall linear forwards;
+}
+
+@keyframes fall {
+  to {
+    transform: translateY(105vh);
+  }
+}
+
+.lightrope {
+  position: absolute;
+  display: flex;
+  list-style: none;
+
+  & li {
+    margin-left: 22px;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+  }
+
+  & li:nth-child(even) {
+    margin-top: 5px;
+  }
+}
+
+.lightrope-1 {
+  top: 54%;
+  left: 43%;
+}
+
+.lightrope-2 {
+  top: 62%;
+  left: 42%;
+}
+
+.lightrope-3 {
+  top: 76%;
+  left: 41%;
+}
+
+.yellow {
+  animation: yellow infinite 2s;
+
+  &:nth-child(even) {
+    animation: yellow infinite 2s;
+  }
+}
+
+.red {
+  animation: red infinite 2s;
+
+  &:nth-child(even) {
+    animation: red infinite 2s;
+  }
+}
+
+.green {
+  animation: green infinite 2s;
+
+  &:nth-child(even) {
+    animation: green infinite 2s;
+  }
+}
+
+.blue {
+  animation: blue infinite 2s;
+
+  &:nth-child(even) {
+    animation: blue infinite 2s;
+  }
+}
+
+.rainbow {
+  &:nth-child(even) {
+    animation: red infinite 3s;
+  }
+
+  &:nth-child(odd) {
+    animation: yellow infinite 1s;
+  }
+}
+
+
+@keyframes yellow {
+
+  100% {
+    background-color: yellow;
+  }
+
+  75% {
+    background-color: rgba($color: yellow, $alpha: .8);
+  }
+
+  50% {
+    background-color: rgba($color: yellow, $alpha: .3);
+  }
+}
+
+@keyframes red {
+  100% {
+    background-color: red;
+  }
+
+  50% {
+    background-color: rgba($color: red, $alpha: .8);
+  }
+
+  25% {
+    background-color: rgba($color: red, $alpha: .3);
+  }
+}
+
+@keyframes green {
+  100% {
+    background-color: green;
+  }
+
+  50% {
+    background-color: rgba($color: green, $alpha: .8);
+  }
+
+  25% {
+    background-color: rgba($color: green, $alpha: .3);
+  }
+}
+
+@keyframes blue {
+  100% {
+    background-color: blue;
+  }
+
+  50% {
+    background-color: rgba($color: blue, $alpha: .8);
+  }
+
+  25% {
+    background-color: rgba($color: blue, $alpha: .3);
+  }
+}

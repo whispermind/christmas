@@ -1,0 +1,86 @@
+@use '@material/switch/styles';
+
+.decoration-config__tree-container,
+.decoration-config__background-container {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 30px 0;
+  justify-content: space-between;
+  row-gap: 10px;
+}
+
+.decoration-config__tree {
+  width: 90px;
+  height: 150px;
+  background: center center/contain no-repeat rgba($color: #c4bbbb62, $alpha: .2);
+}
+
+.decoration-config__background {
+  width: 60px;
+  height: 60px;
+  border-radius: 5px;
+  background: center center/cover no-repeat;
+}
+
+.decoration-config__tree,
+.decoration-config__background {
+  cursor: pointer;
+}
+
+.decoration-config__sound-button,
+.decoration-config__snowflakes-button {
+  width: 35px;
+  height: 35px;
+  background-color: transparent;
+  background: center center/contain no-repeat;
+}
+
+.decoration-config__sound-button {
+  background-image: url(../../assets/svg/audio.svg);
+}
+
+.decoration-config__snowflakes-button {
+  background-image: url(../../assets/svg/snowflake.svg);
+}
+
+.decoration-config__lights-container {
+  display: flex;
+  align-items: center;
+
+  &>div {
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    cursor: pointer;
+    margin: 0 5px;
+  }
+}
+
+.decoration-config__light-color_rainbow {
+  background: linear-gradient(90deg, rgba(255, 0, 0, 1) 0%, rgba(255, 252, 0, 1) 29%, rgba(105, 193, 236, 1) 77%, rgba(0, 212, 255, 1) 100%);
+  ;
+}
+
+.decoration-config__light-color_red {
+  background-color: red;
+}
+
+.decoration-config__light-color_yellow {
+  background-color: yellow;
+}
+
+.decoration-config__light-color_green {
+  background-color: green;
+}
+
+.decoration-config__light-color_blue {
+  background-color: blue;
+}
+
+.decoration-config__lights-toggler {
+  width: 50px;
+}
+
+.mdc-switch {
+  margin-left: 20px;
+}

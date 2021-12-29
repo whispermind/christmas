@@ -7,6 +7,12 @@ export interface Istate {
   yearsSlider: string[];
   sort: string;
   likedOnly: boolean;
+  played: boolean;
+  snowflakes: boolean;
+  tree: number;
+  background: number;
+  lights: boolean;
+  lightsColor: string;
 }
 const state: Istate = {
   shape: [],
@@ -17,5 +23,11 @@ const state: Istate = {
   yearsSlider: [],
   sort: '1',
   likedOnly: false,
+  played: false,
+  snowflakes: false,
+  tree: 1,
+  background: 1,
+  lights: false,
+  lightsColor: 'red',
 };
 export default state;

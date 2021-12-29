@@ -45,6 +45,9 @@
     "webpack-dev-server": "^4.6.0"
   },
   "dependencies": {
+    "@material/ripple": "^13.0.0",
+    "@material/switch": "^13.0.0",
+    "material-components-web": "^13.0.0",
     "nouislider": "^15.5.0",
     "wnumb": "^1.2.0"
   }

@@ -9,7 +9,7 @@ interface Idescription {
   name: string;
   count: string;
   year: string;
-  shape: string; 
+  shape: string;
   color: string;
   size: string;
   favorite: string;
@@ -20,23 +20,11 @@ class products extends HTMLElement {
   private searchInput: HTMLInputElement = document.querySelector('.header__search')!;
   private sliders: noUiSlider.API[] = [];
   async connectedCallback() {
-    this.setStorage();
     this.liked.textContent = state.like.length.toString();
     this.searchInput.focus();
     this.render();
   }
-  private setStorage(){
-    const storageButton = document.querySelector('.storage')!;
-    const storageKey = 'OCHENSLOZHNOEIMYADLYAMOEGOLOKALSTORAGE';
-    const storageState = localStorage.getItem(storageKey);
-    if(storageState) Object.assign(state, JSON.parse(storageState));
-    storageButton.addEventListener('click', () => {
-      localStorage.clear();
-    });
-    window.addEventListener('beforeunload', () => {
-      localStorage.setItem(storageKey, JSON.stringify(state));
-    });
-  }
+
   private render() {
     this.innerHTML = template;
     this.initSlider();
