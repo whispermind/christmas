@@ -9,7 +9,7 @@ interface Idescription {
   name: string;
   count: string;
   year: string;
-  shape: string;
+  shape: string; 
   color: string;
   size: string;
   favorite: string;
