@@ -4,7 +4,7 @@ import state, { Istate } from "../../state";
 import data from "../../data";
 
 class treeDecoration extends HTMLElement {
-  audio: HTMLAudioElement = new Audio('../../assets/audio/audio.mp3');
+  audio: HTMLAudioElement = new Audio('./assets/audio/audio.mp3');
   interval: NodeJS.Timer | null = null;
   connectedCallback() {
     this.render();
@@ -23,8 +23,8 @@ class treeDecoration extends HTMLElement {
     this.classList.add('decorations');
     const dragArea = document.querySelector('.decorations__drag-area')! as HTMLElement;
     const tree = dragArea.querySelector('img')!;
-    dragArea.style.backgroundImage = `url(../../assets/bg/${state.background}.jpg)`;
-    tree.src = `../../assets/tree/${state.tree}.png`
+    dragArea.style.backgroundImage = `url(./assets/bg/${state.background}.jpg)`;
+    tree.src = `./assets/tree/${state.tree}.png`
     this.addToys();
     this.addConfigListeners();
   }
@@ -74,7 +74,7 @@ class treeDecoration extends HTMLElement {
     const toyContainer = document.createElement('div');
     const toyImage = document.createElement('img');
     const amountContainer = document.createElement('div');
-    const SRC = `../../assets/toys/${data[num].num}.png`;
+    const SRC = `./assets/toys/${data[num].num}.png`;
     toyImage.src = SRC;
     toyContainer.classList.add('decorations__toy');
     toyImage.classList.add('decorations__toy-image');
