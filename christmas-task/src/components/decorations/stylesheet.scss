@@ -105,49 +105,49 @@
 }
 
 .yellow {
-  animation: yellow infinite 2s;
+  animation: yellowColor infinite 2s;
 
   &:nth-child(even) {
-    animation: yellow infinite 2s;
+    animation: yellowColor infinite 2s;
   }
 }
 
 .red {
-  animation: red infinite 2s;
+  animation: redColor infinite 2s;
 
   &:nth-child(even) {
-    animation: red infinite 2s;
+    animation: redColor infinite 2s;
   }
 }
 
 .green {
-  animation: green infinite 2s;
+  animation: greenColor infinite 2s;
 
   &:nth-child(even) {
-    animation: green infinite 2s;
+    animation: greenColor infinite 2s;
   }
 }
 
 .blue {
-  animation: blue infinite 2s;
+  animation: blueColor infinite 2s;
 
   &:nth-child(even) {
-    animation: blue infinite 2s;
+    animation: blueColor infinite 2s;
   }
 }
 
 .rainbow {
   &:nth-child(even) {
-    animation: red infinite 3s;
+    animation: redColor infinite 3s;
   }
 
   &:nth-child(odd) {
-    animation: yellow infinite 1s;
+    animation: yellowColor infinite 1s;
   }
 }
 
 
-@keyframes yellow {
+@keyframes yellowColor {
 
   100% {
     background-color: yellow;
@@ -162,7 +162,7 @@
   }
 }
 
-@keyframes red {
+@keyframes redColor {
   100% {
     background-color: red;
   }
@@ -176,7 +176,7 @@
   }
 }
 
-@keyframes green {
+@keyframes greenColor {
   100% {
     background-color: green;
   }
@@ -190,7 +190,7 @@
   }
 }
 
-@keyframes blue {
+@keyframes blueColor {
   100% {
     background-color: blue;
   }
