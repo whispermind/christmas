@@ -13,10 +13,11 @@ class configDecoration extends HTMLElement {
   private render() {
     this.innerHTML = template;
     const button = document.querySelector('.mdc-switch') as HTMLButtonElement;
-    const lights = document.querySelectorAll('li');
-    const colorsContainers = document.querySelectorAll('ul');
-    colorsContainers.forEach(elem =>{
-      if(!state.lights) elem.style.display = 'none';
+    const lights = document.querySelectorAll('.lightrope > li');
+    const colorsContainers = document.querySelectorAll('.ligtrope');
+    colorsContainers.forEach(elem => {
+      const htmlElement = elem as HTMLElement;
+      if(!state.lights) htmlElement.style.display = 'none';
     })
     lights.forEach(elem => elem.classList.add(state.lightsColor));
     this.switcher = new MDCSwitch(button);
@@ -29,8 +30,8 @@ class configDecoration extends HTMLElement {
       const target = event.target as HTMLElement;
       const color =target.dataset.color!
       if(!target.classList.contains('decoration-config__light-color')) return
-      const li = document.querySelectorAll('li');
-      li.forEach((elem) => elem.className = color);
+      const list = document.querySelectorAll('.lightrope > li');
+      list.forEach((elem) => elem.className = color);
       state.lightsColor = color;
     })
     button.addEventListener('click', (event) => {
