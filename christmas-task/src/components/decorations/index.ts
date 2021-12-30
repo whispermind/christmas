@@ -32,11 +32,11 @@ class treeDecoration extends HTMLElement {
     const container = document.querySelector('.decorations__toys-container')!;
     if(!state.like.length){
       for(let i = 0; i < 20; i++){
-        container.append(this.createToy(i + 1));
+        container.append(this.createToy(i));
       }
     }
     state.like.forEach((num) => {
-      container.append(this.createToy(+num));
+      container.append(this.createToy(+num - 1));
     });
   }
   private addConfigListeners(){
@@ -74,12 +74,12 @@ class treeDecoration extends HTMLElement {
     const toyContainer = document.createElement('div');
     const toyImage = document.createElement('img');
     const amountContainer = document.createElement('div');
-    const SRC = `./assets/toys/${data[num - 1].num}.png`;
+    const SRC = `./assets/toys/${data[num].num}.png`;
     toyImage.src = SRC;
     toyContainer.classList.add('decorations__toy');
     toyImage.classList.add('decorations__toy-image');
     amountContainer.classList.add('decorations__toy-amount');
-    amountContainer.textContent = data[num - 1].count;
+    amountContainer.textContent = data[num].count;
     const dragStart = function(event: MouseEvent){
       event.preventDefault;
       const target = event.target as HTMLElement;
