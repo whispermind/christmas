@@ -32,7 +32,7 @@ class treeDecoration extends HTMLElement {
     const container = document.querySelector('.decorations__toys-container')!;
     if(!state.like.length){
       for(let i = 0; i < 20; i++){
-        container.append(this.createToy(i));
+        container.append(this.createToy(i + 1));
       }
     }
     state.like.forEach((num) => {
@@ -74,12 +74,12 @@ class treeDecoration extends HTMLElement {
     const toyContainer = document.createElement('div');
     const toyImage = document.createElement('img');
     const amountContainer = document.createElement('div');
-    const SRC = `./assets/toys/${data[num].num}.png`;
+    const SRC = `./assets/toys/${data[num - 1].num}.png`;
     toyImage.src = SRC;
     toyContainer.classList.add('decorations__toy');
     toyImage.classList.add('decorations__toy-image');
     amountContainer.classList.add('decorations__toy-amount');
-    amountContainer.textContent = data[num].count;
+    amountContainer.textContent = data[num - 1].count;
     const dragStart = function(event: MouseEvent){
       event.preventDefault;
       const target = event.target as HTMLElement;
@@ -88,7 +88,8 @@ class treeDecoration extends HTMLElement {
       let amount = Number(amountContainer.textContent)!;
       if(target.style.position !== 'absolute') amountContainer.textContent =  String(--amount);
       const dragEnd = function(event: MouseEvent){
-        if(document.elementFromPoint(event.pageX, event.pageY)?.tagName !== 'AREA') {
+        const destination = document.elementFromPoint(event.pageX, event.pageY) as HTMLElement;
+        if(destination.tagName !== 'AREA' && !destination.classList.contains('clone') && !destination.classList.contains('lightrope')) {
           target.style.position = '';
           if(amount === 0) toyImage.src = SRC;
           amountContainer.textContent = String(++amount);

@@ -39,6 +39,17 @@ h3 {
   height: 30px;
 }
 
+.header__nav-list {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  margin: 0;
+
+  & li {
+    margin-left: 10px;
+  }
+}
+
 .header__favorites {
   width: 4rem;
   height: 4rem;
@@ -48,4 +59,31 @@ h3 {
   text-align: center;
   font-size: 22px;
   line-height: 4rem;
+}
+
+.start-page {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  height: calc(100vh - 150px);
+  background-image: url('../assets/bg.jpg');
+  background-size: 800%;
+  padding: 0 50px;
+  width: 100%;
+  color: white;
+}
+
+.start-page__button {
+  width: 150px;
+  height: 50px;
+}
+
+.header__start-button {
+  width: 100px;
+  height: 40px;
+  background-image: url(../assets/svg/tree.svg);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-color: transparent;
 }

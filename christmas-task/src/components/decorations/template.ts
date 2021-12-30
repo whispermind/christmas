@@ -8,7 +8,7 @@ const template:string = `
 </div>
 <div class="decorations__toys-container"></div>
 <ul class="lightrope lightrope-1">
-  <li  ></li>
+  <li></li>
   <li ></li>
   <li ></li>
   <li ></li>
