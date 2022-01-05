@@ -9,4 +9,4 @@ const template = `
     </select>
   <button class="cleaner">очистить фильтры</button>
 </div>`;
-export default template
+export default template;

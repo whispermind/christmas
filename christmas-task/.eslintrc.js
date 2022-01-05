@@ -9,7 +9,7 @@ module.exports = {
     "plugin:@typescript-eslint/recommended",
     "plugin:@typescript-eslint/eslint-recommended",
     "airbnb-base",
-    "airbnb-typescript",
+    "airbnb-typescript/base",
     "prettier",
     "eslint:recommended",
   ],

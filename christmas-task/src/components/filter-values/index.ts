@@ -2,7 +2,7 @@ import template from "./template";
 import "./stylesheet.scss";
 import state, { Istate } from "../../state";
 
-class valuesFilter extends HTMLElement {
+class ValuesFilter extends HTMLElement {
   connectedCallback() {
     this.render();
   }
@@ -40,4 +40,4 @@ class valuesFilter extends HTMLElement {
     });
   }
 }
-customElements.define("filter-values", valuesFilter);
+customElements.define("filter-values", ValuesFilter);

@@ -21,13 +21,13 @@ const state: Istate = {
   like: [],
   amountSlider: [],
   yearsSlider: [],
-  sort: '1',
+  sort: "1",
   likedOnly: false,
   played: false,
   snowflakes: false,
   tree: 1,
   background: 1,
   lights: false,
-  lightsColor: 'red',
+  lightsColor: "red",
 };
 export default state;

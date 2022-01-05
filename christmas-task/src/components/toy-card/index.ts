@@ -1,7 +1,7 @@
 import template from "./template";
 import "./stylesheet.scss";
 
-class toyCard extends HTMLElement {
+class ToyCard extends HTMLElement {
   connectedCallback() {
     this.render();
   }
@@ -22,4 +22,4 @@ class toyCard extends HTMLElement {
     });
   }
 }
-customElements.define("toy-card", toyCard);
+customElements.define("toy-card", ToyCard);

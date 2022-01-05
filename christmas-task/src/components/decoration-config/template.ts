@@ -30,7 +30,7 @@ const template = `
     <div class="decoration-config__light-color decoration-config__light-color_blue" data-color="blue"></div>
     <div class="decoration-config__light-color decoration-config__light-color_yellow" data-color="yellow"></div>
     <div class="decoration-config__light-color decoration-config__light-color_green" data-color="green"></div>
-    <button id="basic-switch" class="mdc-switch mdc-switch--unselected" type="button" role="switch" aria-checked="false">
+    <button id="basic-switch" class="mdc-switch mdc-switch--unselected" role="switch" aria-checked="false">
   <div class="mdc-switch__track"></div>
   <div class="mdc-switch__handle-track">
     <div class="mdc-switch__handle">
@@ -52,4 +52,4 @@ const template = `
 <label for="basic-switch">off/on</label>
   </div>
 </div>`;
-export default template
+export default template;
