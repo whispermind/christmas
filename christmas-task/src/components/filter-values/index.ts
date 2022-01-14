@@ -1,6 +1,6 @@
 import template from "./template";
 import "./stylesheet.scss";
-import state, { Istate } from "../../state";
+import state, { Istate } from "../../scripts/state";
 
 class ValuesFilter extends HTMLElement {
   connectedCallback() {

@@ -1,7 +1,7 @@
 import { MDCSwitch } from "@material/switch";
 import template from "./template";
 import "./stylesheet.scss";
-import state from "../../state";
+import state from "../../scripts/state";
 
 class ConfigDecoration extends HTMLElement {
   switcher: MDCSwitch | null = null;

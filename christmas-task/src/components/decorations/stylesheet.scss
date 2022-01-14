@@ -9,10 +9,6 @@
   justify-content: space-between;
 }
 
-.decorations__config {
-  flex-basis: 15%;
-}
-
 .decorations__drag-area {
   display: flex;
   justify-content: center;
@@ -25,6 +21,10 @@
   }
 }
 
+.decorations__config {
+  flex-basis: 15%;
+}
+
 .decorations__toys-container {
   display: flex;
   align-self: center;
@@ -32,6 +32,11 @@
   flex-wrap: wrap;
   flex-basis: 15%;
   background: rgba($color: #c2c0c091, $alpha: .3);
+}
+
+.decorations__toys-container,
+.decorations__config {
+  margin: 50px 0;
 }
 
 .decorations__toy {
@@ -43,6 +48,7 @@
   justify-content: center;
   flex-wrap: wrap;
 }
+
 
 .decorations__toy-image {
   width: 60px;
@@ -150,56 +156,56 @@
 @keyframes yellowColor {
 
   100% {
-    background-color: yellow;
+    background-color: #ffff00;
   }
 
   75% {
-    background-color: rgba($color: yellow, $alpha: .8);
+    background-color: rgba($color: #ffff00, $alpha: .8);
   }
 
   50% {
-    background-color: rgba($color: yellow, $alpha: .3);
+    background-color: rgba($color: #ffff00, $alpha: .3);
   }
 }
 
 @keyframes redColor {
   100% {
-    background-color: red;
+    background-color: #ff0000;
   }
 
   50% {
-    background-color: rgba($color: red, $alpha: .8);
+    background-color: rgba($color: #ff0000, $alpha: .8);
   }
 
   25% {
-    background-color: rgba($color: red, $alpha: .3);
+    background-color: rgba($color: #ff0000, $alpha: .3);
   }
 }
 
 @keyframes greenColor {
   100% {
-    background-color: green;
+    background-color: #008000;
   }
 
   50% {
-    background-color: rgba($color: green, $alpha: .8);
+    background-color: rgba($color: #008000, $alpha: .8);
   }
 
   25% {
-    background-color: rgba($color: green, $alpha: .3);
+    background-color: rgba($color: #008000, $alpha: .3);
   }
 }
 
 @keyframes blueColor {
   100% {
-    background-color: blue;
+    background-color: #0000ff;
   }
 
   50% {
-    background-color: rgba($color: blue, $alpha: .8);
+    background-color: rgba($color: #0000ff, $alpha: .8);
   }
 
   25% {
-    background-color: rgba($color: blue, $alpha: .3);
+    background-color: rgba($color: #0000ff, $alpha: .3);
   }
 }

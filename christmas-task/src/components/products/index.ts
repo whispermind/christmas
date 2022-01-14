@@ -1,8 +1,8 @@
 import * as noUiSlider from "nouislider";
 import "nouislider/dist/nouislider.css";
 import template from "./template";
-import data from "../../data";
-import state from "../../state";
+import data from "../../scripts/data";
+import state from "../../scripts/state";
 import "./stylesheet.scss";
 
 interface Idescription {
@@ -86,6 +86,7 @@ class Products extends HTMLElement {
     });
     itemsContainer.addEventListener("click", (event) => {
       const target = event.target! as HTMLElement;
+      const maxLiked = 20;
       const component = target.closest("toy-card")! as HTMLElement;
       if ((component && event.target instanceof HTMLElement) || event.target instanceof SVGElement) {
         const activeClass = "toy-card__like_active";
@@ -94,7 +95,7 @@ class Products extends HTMLElement {
           const position = state.like.indexOf(num);
           state.like.splice(position, 1);
         } else {
-          if (state.like.length === 20) {
+          if (state.like.length === maxLiked) {
             alert("Все слоты заполнены");
             return;
           }
@@ -211,28 +212,26 @@ class Products extends HTMLElement {
   private initSlider() {
     const yearSliderContainer = document.querySelector(".range-filter__year-slider")! as HTMLElement;
     const amountSliderContainer = document.querySelector(".range-filter__amount-slider")! as HTMLElement;
-    this.sliders.push(
-      noUiSlider.create(yearSliderContainer, {
-        start: [1940, 2020],
-        connect: true,
-        step: 10,
-        range: {
-          min: 1940,
-          max: 2020,
-        },
-      })
-    );
-    this.sliders.push(
-      noUiSlider.create(amountSliderContainer, {
-        start: [1, 20],
-        connect: true,
-        step: 1,
-        range: {
-          min: 1,
-          max: 20,
-        },
-      })
-    );
+    const yearsSliderConfig = {
+      start: [1940, 2020],
+      connect: true,
+      step: 10,
+      range: {
+        min: 1940,
+        max: 2020,
+      },
+    };
+    const amountSliderConfig = {
+      start: [1, 20],
+      connect: true,
+      step: 1,
+      range: {
+        min: 1,
+        max: 20,
+      },
+    };
+    this.sliders.push(noUiSlider.create(yearSliderContainer, yearsSliderConfig));
+    this.sliders.push(noUiSlider.create(amountSliderContainer, amountSliderConfig));
     if (state.yearsSlider.length) this.sliders[0].set(state.yearsSlider);
     if (state.amountSlider.length) this.sliders[1].set(state.amountSlider);
     this.setSliderListeners();

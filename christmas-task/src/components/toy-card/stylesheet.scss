@@ -1,7 +1,7 @@
 .toy-card {
   position: relative;
   text-align: center;
-  color: white;
+  color: #ffffff;
   cursor: pointer;
 
   & img {
@@ -27,7 +27,7 @@
   }
 
   & path {
-    stroke: red;
+    stroke: #ff0000;
     fill: none;
   }
 }
@@ -38,6 +38,6 @@
   }
 
   & path {
-    fill: red;
+    fill: #ff0000;
   }
 }

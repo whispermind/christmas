@@ -5,37 +5,43 @@ import "./components/toy-card";
 import "./components/filter-values";
 import "./components/items-sort";
 import "./styles/stylesheet.scss";
-import state from "./state";
+import { setItem, getItem } from "./scripts/storage";
+import state from "./scripts/state";
 
 const app = document.querySelector("main")!;
 const container = document.querySelector("main")!;
 const nav = document.querySelector("nav")!;
 const storageKey = "OCHENSLOZHNOEIMYADLYAMOEGOLOKALSTORAGE";
-const storageState = localStorage.getItem(storageKey);
-
+const storageState = getItem(storageKey);
 if (storageState) Object.assign(state, JSON.parse(storageState));
 window.addEventListener("beforeunload", () => {
-  localStorage.setItem(storageKey, JSON.stringify(state));
+  setItem(storageKey, JSON.stringify(state));
 });
+
+
 nav.addEventListener("click", (event) => {
   const target = event.target as HTMLElement;
-  if (target.classList.contains("header__toy-button")) {
+  if (target.closest(".header__toy-button")) {
     container.innerHTML = "<products-container></products-container>";
-  } else if (target.classList.contains("header__tree-button")) {
+  } else if (target.closest(".header__tree-button")) {
     container.innerHTML = "<decoration-container></decoration-container>";
-  } else if (target.classList.contains("header__storage-button")) {
+  } else if (target.closest(".header__storage-button")) {
     window.location.reload();
     localStorage.clear();
-  } else if (target.classList.contains("header__start-button")) {
+  } else if (target.closest(".header__start-button")) {
     container.innerHTML = `
     <div class="start-page">
-      <h1>Christmas tree</h1>
-      <button class="start-page__button">START</button>
+    <h1>Christmas Tree</h1>
+    <button class="mdc-button mdc-button--outlined custom-text-button custom-outlined-button start-page__button">
+      <span class="mdc-button__ripple"></span>
+      <span class="mdc-button__label">Start</span>
+    </button>
+  </div>
     </div>`;
   }
 });
 app.addEventListener("click", (event) => {
   const target = event.target as HTMLElement;
-  if (target.classList.contains("start-page__button"))
+  if (target.closest(".start-page__button"))
     container.innerHTML = "<products-container></products-container>";
 });

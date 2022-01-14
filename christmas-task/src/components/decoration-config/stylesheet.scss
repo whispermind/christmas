@@ -40,6 +40,7 @@
 }
 
 .decoration-config__snowflakes-button {
+  margin-left: 10px;
   background-image: url(../../assets/svg/snowflake.svg);
 }
 
@@ -57,24 +58,24 @@
 }
 
 .decoration-config__light-color_rainbow {
-  background: linear-gradient(90deg, rgba(255, 0, 0, 1) 0%, rgba(255, 252, 0, 1) 29%, rgba(105, 193, 236, 1) 77%, rgba(0, 212, 255, 1) 100%);
+  background: linear-gradient(90deg, #ff0000 0%, #fffc00 29%, #69c1ec 77%, #00d4ff 100%);
   ;
 }
 
 .decoration-config__light-color_red {
-  background-color: red;
+  background-color: #ff0000;
 }
 
 .decoration-config__light-color_yellow {
-  background-color: yellow;
+  background-color: #ffff00;
 }
 
 .decoration-config__light-color_green {
-  background-color: green;
+  background-color: #008000;
 }
 
 .decoration-config__light-color_blue {
-  background-color: blue;
+  background-color: #0000ff;
 }
 
 .decoration-config__lights-toggler {

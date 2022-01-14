@@ -1,7 +1,7 @@
 import template from "./template";
 import "./stylesheet.scss";
-import state from "../../state";
-import data from "../../data";
+import state from "../../scripts/state";
+import data from "../../scripts/data";
 
 class TreeDecoration extends HTMLElement {
   audio: HTMLAudioElement = new Audio("./assets/audio/audio.mp3");
@@ -33,9 +33,10 @@ class TreeDecoration extends HTMLElement {
   }
 
   private addToys() {
+    const defaultAmount = 20;
     const container = document.querySelector(".decorations__toys-container")!;
     if (!state.like.length) {
-      for (let i = 0; i < 20; i += 1) {
+      for (let i = 0; i < defaultAmount; i += 1) {
         container.append(this.createToy(i));
       }
     }
@@ -100,14 +101,14 @@ class TreeDecoration extends HTMLElement {
           !destination.classList.contains("lightrope")
         ) {
           target.style.position = "";
-          if (amount === 0) toyImage.src = SRC;
+          if (!amount) toyImage.src = SRC;
           amountContainer.textContent = String((amount += 1));
           if (target.classList.contains("clone")) {
             target.remove();
           }
           return;
         }
-        if (amount === 0) toyImage.src = "";
+        if (!amount) toyImage.src = "";
         if (target.classList.contains("clone")) {
           target.style.left = `${DEevent.pageX - shiftX}px`;
           target.style.top = `${DEevent.pageY - shiftY}px`;
