@@ -4,18 +4,18 @@ import state from "../../scripts/state";
 import data from "../../scripts/data";
 
 class TreeDecoration extends HTMLElement {
-  //audio: HTMLAudioElement = new Audio("./assets/audio/audio.mp3");
+  audio: HTMLAudioElement = new Audio("./assets/audio/audio.mp3");
 
   interval: NodeJS.Timer | null = null;
 
   connectedCallback() {
     this.render();
-    //if (state.played) this.audio.play();
+    if (state.played) this.audio.play();
     if (state.snowflakes) this.interval = setInterval(this.createSnowflake, 100);
   }
 
   disconnectedCallback() {
-    //this.audio.pause();
+    this.audio.pause();
     if (this.interval) clearInterval(this.interval);
   }
 
@@ -141,10 +141,10 @@ class TreeDecoration extends HTMLElement {
 
   private toggleMusic() {
     if (state.played) {
-      //this.audio.pause();
+      this.audio.pause();
       state.played = false;
     } else {
-      //this.audio.play();
+      this.audio.play();
       state.played = true;
     }
   }
