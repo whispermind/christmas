@@ -13,7 +13,7 @@ const template = `
     </div>
   </div>
   <div class="slider-container">
-    <h3>Год приобритения</h3>
+    <h3>Создано в</h3>
     <div class="slider__controls">
       <input class="slider__years-min" type=number disabled>
       <div class="range-filter__year-slider"></div>

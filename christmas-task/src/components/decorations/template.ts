@@ -20,40 +20,42 @@ const template = `
       253,4,239,1" shape="poly">
   </map>
 </div>
-<div class="decorations__toys-container"></div>
-<ul class="lightrope lightrope-1">
-  <li></li>
-  <li ></li>
-  <li ></li>
-  <li ></li>
-  <li ></li>
-  <li ></li>
-  <li ></li>
-  <li ></li>
-</ul>
-<ul class="lightrope lightrope-2">
-  <li ></li>
-  <li ></li>
-  <li ></li>
-  <li ></li>
-  <li ></li>
-  <li ></li>
-  <li ></li>
-  <li ></li>
-  <li ></li>
-  <li ></li>
-</ul>
-<ul class="lightrope lightrope-3">
-  <li ></li>
-  <li ></li>
-  <li ></li>
-  <li ></li>
-  <li ></li>
-  <li ></li>
-  <li ></li>
-  <li ></li>
-  <li ></li>
-  <li ></li>
-</ul>
+<div class="decorations__toys-container">
+</div>
 `;
 export default template;
+
+// <ul class="lightrope lightrope-1">
+//   <li></li>
+//   <li ></li>
+//   <li ></li>
+//   <li ></li>
+//   <li ></li>
+//   <li ></li>
+//   <li ></li>
+//   <li ></li>
+// </ul>
+// <ul class="lightrope lightrope-2">
+//   <li ></li>
+//   <li ></li>
+//   <li ></li>
+//   <li ></li>
+//   <li ></li>
+//   <li ></li>
+//   <li ></li>
+//   <li ></li>
+//   <li ></li>
+//   <li ></li>
+// </ul>
+// <ul class="lightrope lightrope-3">
+//   <li ></li>
+//   <li ></li>
+//   <li ></li>
+//   <li ></li>
+//   <li ></li>
+//   <li ></li>
+//   <li ></li>
+//   <li ></li>
+//   <li ></li>
+//   <li ></li>
+// </ul>

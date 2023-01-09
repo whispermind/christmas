@@ -4,21 +4,19 @@ import state from "../../scripts/state";
 import data from "../../scripts/data";
 
 class TreeDecoration extends HTMLElement {
-  audio: HTMLAudioElement = new Audio("./assets/audio/audio.mp3");
+  //audio: HTMLAudioElement = new Audio("./assets/audio/audio.mp3");
 
   interval: NodeJS.Timer | null = null;
 
   connectedCallback() {
     this.render();
-    if (state.played) this.audio.play();
+    //if (state.played) this.audio.play();
     if (state.snowflakes) this.interval = setInterval(this.createSnowflake, 100);
-    document.body.style.overflow = "hidden";
   }
 
   disconnectedCallback() {
-    this.audio.pause();
+    //this.audio.pause();
     if (this.interval) clearInterval(this.interval);
-    document.body.style.overflow = "";
   }
 
   private render() {
@@ -91,16 +89,24 @@ class TreeDecoration extends HTMLElement {
       const target = DSevent.target as HTMLElement;
       const shiftX = target.clientWidth / 2;
       const shiftY = target.clientHeight / 2;
-      let amount = Number(amountContainer.textContent)!;
-      if (target.style.position !== "absolute") amountContainer.textContent = String((amount -= 1));
+      let amount = +amountContainer.textContent!;
+      target.style.position = "absolute";
+      target.style.opacity = "0.5";
+      const mm = (e: MouseEvent) => {
+        target.style.top = `${e.pageY - shiftY}px`;
+        target.style.left = `${e.pageX - shiftX}px`;
+      };
+      window.addEventListener("mousemove", mm);
+      if (!target.classList.contains("clone")) amountContainer.textContent = String((amount -= 1));
       const dragEnd = function dragEnd(DEevent: MouseEvent) {
-        const destination = document.elementFromPoint(DEevent.pageX, DEevent.pageY) as HTMLElement;
-        if (
-          destination.tagName !== "AREA" &&
-          !destination.classList.contains("clone") &&
-          !destination.classList.contains("lightrope")
-        ) {
+        window.removeEventListener("mousemove", mm);
+        if (!target.classList.contains("clone")) {
           target.style.position = "";
+          target.style.opacity = "";
+        }
+        const destination = document.elementFromPoint(DEevent.pageX, DEevent.pageY) as HTMLElement;
+        if (!destination || destination.tagName !== "AREA") {
+          if (target.classList.contains("clone")) target.remove();
           if (!amount) toyImage.src = SRC;
           amountContainer.textContent = String((amount += 1));
           if (target.classList.contains("clone")) {
@@ -121,10 +127,12 @@ class TreeDecoration extends HTMLElement {
         clone.style.top = `${DEevent.pageY - shiftY}px`;
         clone.classList.add("decorations__toy-image", "clone");
         clone.addEventListener("dragstart", dragStart);
-        thisComponent.append(clone);
+        document.querySelector(".decorations__drag-area")!.append(clone);
       };
-      window.addEventListener("dragend", dragEnd, { once: true });
+      window.addEventListener("mouseup", dragEnd, { once: true });
+      DSevent.preventDefault();
     };
+
     toyContainer.append(toyImage);
     toyContainer.append(amountContainer);
     toyImage.addEventListener("dragstart", dragStart);
@@ -133,10 +141,10 @@ class TreeDecoration extends HTMLElement {
 
   private toggleMusic() {
     if (state.played) {
-      this.audio.pause();
+      //this.audio.pause();
       state.played = false;
     } else {
-      this.audio.play();
+      //this.audio.play();
       state.played = true;
     }
   }

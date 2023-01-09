@@ -31,6 +31,7 @@ class Products extends HTMLElement {
 
   private render() {
     this.innerHTML = template;
+    this.style.width = "100%";
     this.initSlider();
     this.addListeners();
     this.filterItems();

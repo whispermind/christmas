@@ -2,6 +2,7 @@
   background-image: url('../../assets/bg.jpg');
   background-size: 800%;
   padding: 0 50px;
+  text-align: center;
   width: 100%;
 }
 
@@ -52,5 +53,21 @@
   & input {
     width: 70px;
     text-align: center;
+  }
+}
+
+@media (max-width: 1200px) {
+
+  .range-filter__year-slider,
+  .range-filter__amount-slider {
+    width: 200px;
+  }
+
+  .slider__controls {
+    width: 350px;
+
+    & input {
+      width: 50px;
+    }
   }
 }
